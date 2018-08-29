@@ -13,14 +13,10 @@ $(function() {
     * a related set of tests. This suite is all about the RSS
     * feeds definitions, the allFeeds variable in our application.
     */
-    describe('RSS Feeds', function() {
-        /* This is our first test - it tests to make sure that the
-         * allFeeds variable has been defined and that it is not
-         * empty. Experiment with this before you get started on
-         * the rest of this project. What happens when you change
-         * allFeeds in app.js to be an empty array and refresh the
-         * page?
-         */
+
+// ------------ First Test Suite -----------
+// Test to be sure all feeds are
+    describe('RSS Feeds', function() { 
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
@@ -121,8 +117,6 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
         beforeEach(function(done) {
-            let feedContent = document.querySelectorAll('.feed');
-
             loadFeed(0);
             let feed1 = feedContainer.children[0].innerText;
 
@@ -131,7 +125,6 @@ $(function() {
 
             feedMill.push(feed1);
             feedMill.push(feed2);
-            console.log(feedMill);
         });
         it('content updates on change', function() {
             expect(feedMill[0] != feedMill[1]).toBe(true);

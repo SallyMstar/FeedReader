@@ -12,7 +12,7 @@
 ### You may download the project using any of the following methods:
 		- In your browser, navigate to https://github.com/SallyMstar/FeedReader.git and select the option to fork the project to your own GitHub account.
 		- In your browser, navigate to https://github.com/SallyMstar/FeedReader.git and select the option to download the zip file.
-		- From the terminal on your computer, enter `git clone https://github.com/SallyMstar/FeedReader.git`
+		- From the terminal on your computer, enter ` git clone https://github.com/SallyMstar/FeedReader.git `
 	
 
 ## Jasmine Test Suite

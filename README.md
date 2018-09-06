@@ -11,7 +11,7 @@
 		<li>In your browser, navigate to https://github.com/SallyMstar/FeedReader.git and select the option to fork the project to your own GitHub account.</li>
 		<li>In your browser, navigate to https://github.com/SallyMstar/FeedReader.git and select the option to download the zip file.</li>
 		<li>From the terminal on your computer, enter 
-			git clone https://github.com/SallyMstar/FeedReader.git
+			`git clone https://github.com/SallyMstar/FeedReader.git`
 		</li>
 	</ul>
 

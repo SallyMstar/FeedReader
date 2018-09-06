@@ -12,12 +12,12 @@ At the bottom of the page, you will find a collection of expectations for proper
 If you'd like to download or clone the project to your own computer, you may do so by following the instructions below.  If you choose to download, you may browse to the index.html file on your computer to run the project locally.
 
 
-### You may download the project using either of the following methods:
-* In your browser, navigate to [my GitHub repo](https://github.com/SallyMstar/FeedReader.git) and select the option to download the zip file.
-* From the terminal on your computer, enter ` git clone https://github.com/SallyMstar/FeedReader.git `
+* ### You may download the project using either of the following methods:
+	* In your browser, navigate to [my GitHub repo](https://github.com/SallyMstar/FeedReader.git) and select the option to download the zip file.
+	* From the terminal on your computer, enter ` git clone https://github.com/SallyMstar/FeedReader.git `
 
-### Or you may fork a copy on GitHub
-* In your browser, navigate to [my GitHub repo](https://github.com/SallyMstar/FeedReader.git) and select the option to fork the project to your own GitHub account.
+* ### Or you may fork a copy on GitHub
+	* In your browser, navigate to [my GitHub repo](https://github.com/SallyMstar/FeedReader.git) and select the option to fork the project to your own GitHub account.
 
 ## Jasmine Test Suite
 

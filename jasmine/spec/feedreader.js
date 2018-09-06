@@ -134,7 +134,7 @@ $(function() {
                     // Compare each entry to the second entry to be sure the content isn't the same
                     expect(feedMill[0]).not.toEqual(feedMill[1]);
                 } else {
-                    console.log(feedMill);
+                    // console.log(feedMill);
                     console.log("end of list");
                 }
         });

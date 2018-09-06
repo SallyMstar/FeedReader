@@ -9,7 +9,7 @@ This feedreader example provides a demonstration of functional testing using the
 At the bottom of the page, you will find a collection of expectations for proper execution of the RSS Feedreader.  Each expectation has been automatically tested against the page execution.  If the page performs as expected, the test passes and is 'green'.  If the page does not perform as expected, the test fails and is 'red'.  The Jasmine test suite shows that all expectations have been met for proper function and display of this page.
 
 
-If you'd like to download or clone the project to your own computer, you may do so by following the instructions below.  If you choose to download, you may browse to the index.html file on your computer to run the project locally.
+If you'd like to download or clone the project to your own computer, you may do so by following the instructions below.  After downloading, open the index.html file in the browser (Chrome, FireFox, Internet Explorer, etc) on your computer to run the project locally.
 
 
 * ### You may download the project using either of the following methods:

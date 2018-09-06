@@ -104,9 +104,6 @@ $(function() {
         it('feed container has content', function(){
             let feedContainer = document.querySelector('.feed');
             let feedEntries = document.querySelectorAll('.entry');
-            // Double-check the number of entries
-              console.log(feedEntries.length); 
-
             expect(feedEntries.length).toBeGreaterThan(0);
         });
     });
@@ -131,17 +128,13 @@ $(function() {
 
         it('content updates on change', function() {
             // Retrieve entries for each feed and index each.
-            Array.from(allFeeds).forEach(function(entry, index) {
+            Array.from(feedContainer.children).forEach(function(entry, index) {
                 // If it's the last feed, skip the comparison to successor as there isn't one
-                if(feedMill[1]) {
-                    // Compare each entry to the previously saved entry to be sure the content isn't the same
+                if(feedMill[index+1]) {
+                    // Compare each entry to the second entry to be sure the content isn't the same
                     expect(feedMill[0]).not.toEqual(feedMill[1]);
-// Console print to verify output as expected
-                    console.log(feedMill[0]);
-                    console.log(" compared to ");
-                    console.log(feedMill[1]);
-                    console.log("---------------------");
                 } else {
+                    console.log(feedMill);
                     console.log("end of list");
                 }
         });

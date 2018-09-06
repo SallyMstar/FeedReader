@@ -23,7 +23,7 @@ $(function() {
         });
 
 
-        /* TODO: Write a test that loops through each feed
+        /* Write a test that loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
@@ -35,7 +35,7 @@ $(function() {
             }
          })
 
-        /* TODO: Write a test that loops through each feed
+        /* Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
@@ -49,9 +49,9 @@ $(function() {
     });
 
 
-    /* TODO: Write a new test suite named "The menu" */
+    /* Write a new test suite named "The menu" */
 
-        /* TODO: Write a test that ensures the menu element is
+        /* Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
@@ -63,10 +63,10 @@ $(function() {
 
             console.log(trigger);
          it('Page starts with hidden menu', function() {
-            expect(trigger).toMatch("menu-hidden");
+            expect(trigger).toContain("menu-hidden");
          })
 
-         /* TODO: Write a test that ensures the menu changes
+         /* Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
@@ -76,7 +76,7 @@ $(function() {
                 menuIcon.click();
             // retrieve class value after simulated click
                 trigger = view.className;
-                expect(trigger).not.toMatch("menu-hidden");
+                expect(trigger).not.toContain("menu-hidden");
                 });
 
           it('Menu hides when clicked again', function() {
@@ -84,13 +84,13 @@ $(function() {
                 menuIcon.click();
             // retrieve class value after simulated click
                 trigger = view.className;
-                expect(trigger).toMatch("menu-hidden");               
+                expect(trigger).toContain("menu-hidden");               
                 });
     });
 
-    /* TODO: Write a new test suite named "Initial Entries" */
+    /* Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function() {
-        /* TODO: Write a test that ensures when the loadFeed
+        /* Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
          * Remember, loadFeed() is asynchronous so this test will require
@@ -108,26 +108,40 @@ $(function() {
     });
 
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
+    /* Write a new test suite named "New Feed Selection" */
+    // Compare each feed to the previous one to be sure the content is updating properly
     describe('New Feed Selection', function() {
-            let feedContainer = document.querySelector('.feed');
-            let feedMill =  [];
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
-        beforeEach(function(done) {
-            loadFeed(0);
-            let feed1 = feedContainer.children[0].innerText;
+            // create the variables needed to retrieve feeds and store them in an array
+            const feedContainer = document.querySelector('.feed');
+            const feedMill = [];
 
-            loadFeed(1,done);
-            let feed2 = feedContainer.children[1].innerText;
+        beforeEach(function(done) {  // create the async functions to run prior to comparisons 
+            loadFeed(0, function() {
 
-            feedMill.push(feed1);
-            feedMill.push(feed2);
-        });
-        it('content updates on change', function() {
-            expect(feedMill[0] != feedMill[1]).toBe(true);
+            Array.from(feedContainer.children).forEach(function(entry) {
+                // push each feed into the array so it can be retrieved for comparison
+                feedMill.push(entry.innerText);
+            });
+            loadFeed(1, done());
+            });
         })
+
+        it('content updates on change', function() {
+            // Retrieve entries for each feed and index each.
+            Array.from(feedContainer.children).forEach(function(entry, index) {
+                // If it's the last feed, skip the comparison to successor as there isn't one
+                if(feedMill[index+1]) {
+                    // Compare each entry to the previously saved entry to be sure the content isn't the same
+                    expect(entry.innerText).not.toMatch(feedMill[index + 1]);
+// Console print to verify output as expected
+/*                    console.log(entry.innerText);
+                    console.log(" compared to ");
+                    console.log(feedMill[index+1]);
+                    console.log("---------------------");
+*/                } else {
+                    console.log("end of list");
+                }
+        });
+        });
     });
 }());

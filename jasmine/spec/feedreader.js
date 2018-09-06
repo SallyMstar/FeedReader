@@ -58,7 +58,7 @@ $(function() {
          */
     describe('The menu', function() {
             let view = document.body;
-            let trigger = view.className;
+            let trigger = view.classList;
             let menuIcon = $('.menu-icon-link');
 
             console.log(trigger);
@@ -103,7 +103,11 @@ $(function() {
 
         it('feed container has content', function(){
             let feedContainer = document.querySelector('.feed');
-            expect(feedContainer.children.length === 0).not.toBe('true');
+            let feedEntries = document.querySelectorAll('.entry');
+            // Double-check the number of entries
+              console.log(feedEntries.length); 
+
+            expect(feedEntries.length).toBeGreaterThan(0);
         });
     });
 
@@ -117,28 +121,27 @@ $(function() {
 
         beforeEach(function(done) {  // create the async functions to run prior to comparisons 
             loadFeed(0, function() {
-
-            Array.from(feedContainer.children).forEach(function(entry) {
-                // push each feed into the array so it can be retrieved for comparison
-                feedMill.push(entry.innerText);
+                feedMill.push($('.feed').html());
+            loadFeed(1, function() {
+                feedMill.push($('.feed').html());
+                done();
             });
-            loadFeed(1, done());
             });
         })
 
         it('content updates on change', function() {
             // Retrieve entries for each feed and index each.
-            Array.from(feedContainer.children).forEach(function(entry, index) {
+            Array.from(allFeeds).forEach(function(entry, index) {
                 // If it's the last feed, skip the comparison to successor as there isn't one
-                if(feedMill[index+1]) {
+                if(feedMill[1]) {
                     // Compare each entry to the previously saved entry to be sure the content isn't the same
-                    expect(entry.innerText).not.toMatch(feedMill[index + 1]);
+                    expect(feedMill[0]).not.toEqual(feedMill[1]);
 // Console print to verify output as expected
-/*                    console.log(entry.innerText);
+                    console.log(feedMill[0]);
                     console.log(" compared to ");
-                    console.log(feedMill[index+1]);
+                    console.log(feedMill[1]);
                     console.log("---------------------");
-*/                } else {
+                } else {
                     console.log("end of list");
                 }
         });
